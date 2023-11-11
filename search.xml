@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Markdown语法</title>
+      <link href="/2023/11/11/Markdown%E8%AF%AD%E6%B3%95/"/>
+      <url>/2023/11/11/Markdown%E8%AF%AD%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h1><h2 id="标题："><a href="#标题：" class="headerlink" title="标题："></a>标题：</h2><p><strong>使用<code>#</code>规定标题等级，总共六级</strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 一级标题</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br><span class="line"><span class="section">#### 四级标题</span></span><br><span class="line"><span class="section">##### 五级标题</span></span><br><span class="line"><span class="section">###### 六级标题</span></span><br></pre></td></tr></table></figure><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h2 id="字体："><a href="#字体：" class="headerlink" title="字体："></a>字体：</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">*这是斜体*</span></span><br><span class="line"><span class="strong">**这是粗体**</span></span><br><span class="line"><span class="strong">**<span class="emphasis">*这是粗体加斜体*</span>**</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">u</span>&gt;</span></span>这是下划线<span class="language-xml"><span class="tag">&lt;/<span class="name">u</span>&gt;</span></span></span><br><span class="line">~~这是删除线~~</span><br><span class="line">==这是高亮文字==</span><br><span class="line">这是emoji表情:smile:</span><br></pre></td></tr></table></figure><p><em>这是斜体</em><br><strong>这是粗体</strong><br><em><strong>这是粗体加斜体</strong></em><br><u>这是下划线</u><br><del>这是删除线</del><br>&#x3D;&#x3D;这是高亮文字&#x3D;&#x3D;<br>这是emoji表情:smile:</p><h2 id="有序列表："><a href="#有序列表：" class="headerlink" title="有序列表："></a>有序列表：</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 这是有序列表1</span><br><span class="line"><span class="bullet">2.</span> 这是有序列表2</span><br><span class="line"><span class="bullet">3.</span> 这是有序列表3</span><br></pre></td></tr></table></figure><ol><li>这是有序列表1</li><li>这是有序列表2</li><li>这是有序列表3</li></ol><h2 id="无序列表："><a href="#无序列表：" class="headerlink" title="无序列表："></a>无序列表：</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> 这是无序列表1</span><br><span class="line"><span class="bullet">-</span> 这是无序列表2</span><br><span class="line"><span class="bullet">-</span> 这是无序列表3</span><br></pre></td></tr></table></figure><ul><li>这是无序列表1</li><li>这是无序列表2</li><li>这是无序列表3</li></ul><p><strong>如果要控制列表的层级，则需要在符号<code>-</code>前使用空格</strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> 这是无序列表1</span><br><span class="line"><span class="bullet">-</span> 这是无序列表2</span><br><span class="line"><span class="bullet">  -</span> 这是无序列表2.1</span><br><span class="line"><span class="bullet">  -</span> 这是无序列表2.2</span><br></pre></td></tr></table></figure><ul><li>这是无序列表1</li><li>这是无序列表2<ul><li>这是无序列表2.1</li><li>这是无序列表2.2</li></ul></li></ul><p><strong>任务列表的使用</strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> [x] 吃饭饭</span><br><span class="line"><span class="bullet">-</span> [x] 睡觉觉</span><br><span class="line"><span class="bullet">-</span> [ ] 写作业</span><br></pre></td></tr></table></figure><ul><li><input checked="" disabled="" type="checkbox"> 吃饭饭</li><li><input checked="" disabled="" type="checkbox"> 睡觉觉</li><li><input disabled="" type="checkbox"> 写作业</li></ul><h2 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h2><p><strong>将引用的话放于<code>&gt;</code>符号后</strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 昔日已乘黄鹤去，此地空余黄鹤楼 ——《黄鹤楼》</span></span><br></pre></td></tr></table></figure><blockquote><p>昔日已乘黄鹤去，此地空余黄鹤楼 ——《黄鹤楼》</p></blockquote><h2 id="分割线："><a href="#分割线：" class="headerlink" title="分割线："></a>分割线：</h2><p><strong>在一行中使用三个以上的减号来建立一个分割线</strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure><hr><h2 id="链接："><a href="#链接：" class="headerlink" title="链接："></a>链接：</h2><p><strong><code>链接：[文字](链接)</code></strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Google</span>](<span class="link">google.com &quot;链接提示&quot;</span>)</span><br></pre></td></tr></table></figure><p><a href="google.com" title="链接提示">Google</a></p><p><strong>引用链接</strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Youtube</span>][<span class="symbol">id</span>], [<span class="string">Youtube</span>][<span class="symbol">id</span>], [<span class="string">Youtube</span>][<span class="symbol">id</span>]</span><br><span class="line">[<span class="symbol">id</span>]:<span class="link">youtube.com &quot;链接提示&quot;</span></span><br></pre></td></tr></table></figure><p>[Youtube][id], [Youtube][id], [Youtube][id]</p><p>[id]:youtube.com“链接提示”</p><p><strong>URL</strong></p><p><a href="http://www.google.com/">http://www.google.com</a></p><h2 id="图片："><a href="#图片：" class="headerlink" title="图片："></a>图片：</h2><p>插入图片，格式为 <code>![图片描述](图片链接地址)</code></p><h2 id="代码块："><a href="#代码块：" class="headerlink" title="代码块："></a>代码块：</h2><p><strong>使用三个反引号+编程语言名字</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```c</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">```</span><br></pre></td></tr></table></figure><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="表格："><a href="#表格：" class="headerlink" title="表格："></a>表格：</h2><p><strong>冒号在左边表示左对齐，在右边为右对齐，如果两边都有冒号为居中对齐</strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|周一|周二|周三|</span><br><span class="line">|:--|--:|:-:|</span><br><span class="line">|左|右|中|</span><br><span class="line">|左|右|中|</span><br></pre></td></tr></table></figure><table><thead><tr><th align="left">周一</th><th align="right">周二</th><th align="center">周三</th></tr></thead><tbody><tr><td align="left">左</td><td align="right">右</td><td align="center">中</td></tr><tr><td align="left">左</td><td align="right">右</td><td align="center">中</td></tr></tbody></table><h2 id="数学公式："><a href="#数学公式：" class="headerlink" title="数学公式："></a>数学公式：</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\frac&#123;\partial f&#125;&#123;\partial x&#125; = 2\sqrt&#123;a&#125;x</span><br><span class="line">$$</span><br></pre></td></tr></table></figure><p>$$<br>\frac{\partial f}{\partial x} &#x3D; 2\sqrt{a}x<br>$$</p><h2 id="脚注："><a href="#脚注：" class="headerlink" title="脚注："></a>脚注：</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">脚注[^脚注名字]</span><br><span class="line">[^脚注名字]：这是脚注的解释</span><br></pre></td></tr></table></figure><p>脚注[^脚注名字]<br>[^脚注名字]：这是脚注的解释</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Front-matter配置</title>
+      <link href="/2023/11/11/Front-matter%E9%85%8D%E7%BD%AE/"/>
+      <url>/2023/11/11/Front-matter%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Front-matter配置"><a href="#Front-matter配置" class="headerlink" title="Front-matter配置"></a>Front-matter配置</h1><h2 id="Page-Front-matter"><a href="#Page-Front-matter" class="headerlink" title="Page Front-matter"></a>Page Front-matter</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title:</span><br><span class="line">date:</span><br><span class="line">updated:</span><br><span class="line">type:</span><br><span class="line">comments:</span><br><span class="line">description:</span><br><span class="line">keywords:</span><br><span class="line">top<span class="emphasis">_img:</span></span><br><span class="line"><span class="emphasis">mathjax:</span></span><br><span class="line"><span class="emphasis">katex:</span></span><br><span class="line"><span class="emphasis">aside:</span></span><br><span class="line"><span class="emphasis">aplayer:</span></span><br><span class="line"><span class="emphasis">highlight_</span>shrink:</span><br><span class="line"><span class="section">random:</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure><table><thead><tr><th align="left">写法</th><th>解释</th></tr></thead><tbody><tr><td align="left">title</td><td>【必需】页面标题</td></tr><tr><td align="left">date</td><td>【必需】页面创建日期</td></tr><tr><td align="left">type</td><td>【必需】标签、分类和友情链接三个页面需要配置</td></tr><tr><td align="left">updated</td><td>【可选】页面更新日期</td></tr><tr><td align="left">description</td><td>【可选】页面描述</td></tr><tr><td align="left">keywords</td><td>【可选】页面关键字</td></tr><tr><td align="left">comments</td><td>【可选】显示页面评论模块 (默认 true)</td></tr><tr><td align="left">top_img</td><td>【可选】页面顶部图片</td></tr><tr><td align="left">mathjax</td><td>【可选】显示mathjax (当设置mathjax的per_page: false时，才需要配置，默认 false)</td></tr><tr><td align="left">katex</td><td>【可选】显示katex (当设置katex的per_page: false时，才需要配置，默认 false)</td></tr><tr><td align="left">aside</td><td>【可选】显示侧边栏 (默认 true)</td></tr><tr><td align="left">aplayer</td><td>【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置</td></tr><tr><td align="left">highlight_shrink</td><td>【可选】配置代码框是否展开 (true&#x2F;false) (默认为设置中highlight_shrink的配置)</td></tr><tr><td align="left">random</td><td>【可选】配置友情链接是否随机排序（默认为 false)</td></tr></tbody></table><h2 id="Post-Front-matter"><a href="#Post-Front-matter" class="headerlink" title="Post Front-matter"></a>Post Front-matter</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title:</span><br><span class="line">date:</span><br><span class="line">updated:</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">keywords:</span><br><span class="line">description:</span><br><span class="line">top<span class="emphasis">_img:</span></span><br><span class="line"><span class="emphasis">comments:</span></span><br><span class="line"><span class="emphasis">cover:</span></span><br><span class="line"><span class="emphasis">toc:</span></span><br><span class="line"><span class="emphasis">toc_</span>number:</span><br><span class="line">toc<span class="emphasis">_style_</span>simple:</span><br><span class="line">copyright:</span><br><span class="line">copyright<span class="emphasis">_author:</span></span><br><span class="line"><span class="emphasis">copyright_</span>author<span class="emphasis">_href:</span></span><br><span class="line"><span class="emphasis">copyright_</span>url:</span><br><span class="line">copyright<span class="emphasis">_info:</span></span><br><span class="line"><span class="emphasis">mathjax:</span></span><br><span class="line"><span class="emphasis">katex:</span></span><br><span class="line"><span class="emphasis">aplayer:</span></span><br><span class="line"><span class="emphasis">highlight_</span>shrink:</span><br><span class="line">aside:</span><br><span class="line"><span class="section">abcjs:</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure><table><thead><tr><th>写法</th><th>解释</th></tr></thead><tbody><tr><td>title</td><td>【必需】文章标题</td></tr><tr><td>date</td><td>【必需】文章创建日期</td></tr><tr><td>updated</td><td>【可选】文章更新日期</td></tr><tr><td>tags</td><td>【可选】文章标签</td></tr><tr><td>categories</td><td>【可选】文章分类</td></tr><tr><td>keywords</td><td>【可选】文章关键字</td></tr><tr><td>description</td><td>【可选】文章描述</td></tr><tr><td>top_img</td><td>【可选】文章顶部图片</td></tr><tr><td>cover</td><td>【可选】文章缩略图(如果没有设置top_img,文章页顶部将显示缩略图，可设为false&#x2F;图片地址&#x2F;留空)</td></tr><tr><td>comments</td><td>【可选】显示文章评论模块(默认 true)</td></tr><tr><td>toc</td><td>【可选】显示文章TOC(默认为设置中toc的enable配置)</td></tr><tr><td>toc_number</td><td>【可选】显示toc_number(默认为设置中toc的number配置)</td></tr><tr><td>toc_style_simple</td><td>【可选】显示 toc 简洁模式</td></tr><tr><td>copyright</td><td>【可选】显示文章版权模块(默认为设置中post_copyright的enable配置)</td></tr><tr><td>copyright_author</td><td>【可选】文章版权模块的文章作者</td></tr><tr><td>copyright_author_href</td><td>【可选】文章版权模块的文章作者链接</td></tr><tr><td>copyright_url</td><td>【可选】文章版权模块的文章连结链接</td></tr><tr><td>copyright_info</td><td>【可选】文章版权模块的版权声明文字</td></tr><tr><td>mathjax</td><td>【可选】显示mathjax(当设置 mathjax 的 per_page: false 时，才需要配置，默认 false )</td></tr><tr><td>katex</td><td>【可选】显示 katex (当设置 katex 的 per_page: false 时，才需要配置，默认 false )</td></tr><tr><td>aplayer</td><td>【可选】在需要的页面加载 aplayer 的 js 和 css,请参考文章下面的音乐 配置</td></tr><tr><td>highlight_shrink</td><td>【可选】配置代码框是否展开(true&#x2F;false)(默认为设置中 highlight_shrink 的配置)</td></tr><tr><td>aside</td><td>【可选】显示侧边栏 (默认 true)</td></tr><tr><td>abcjs</td><td>【可选】加载 abcjs (当设置 abcjs 的 per_page: false 时，才需要配置，默认 false )</td></tr></tbody></table><h2 id="文章置顶滚动栏权重"><a href="#文章置顶滚动栏权重" class="headerlink" title="文章置顶滚动栏权重"></a>文章置顶滚动栏权重</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swiper_index: 1 #置顶轮播图顺序，非负整数，数字越大越靠前</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Clash作者停更</title>
+      <link href="/2023/11/10/Clash/"/>
+      <url>/2023/11/10/Clash/</url>
+      
+        <content type="html"><![CDATA[<h2 id="软件Clash被删库"><a href="#软件Clash被删库" class="headerlink" title="软件Clash被删库"></a>软件Clash被删库</h2><p><strong>著名软件Clash最近在GitHub上被删库，该项目作者在推特上宣布：”停止更新了，江湖再见吧“</strong></p><p><img src="/myimg/1002.jpg" alt="clash"></p><p><strong>这突如其来的公告引发了网友的关注和焦虑，毕竟作者没有透露停更的任何原因。但有网友猜测作者有可能被相关部门约谈喝茶了，因为作者在四天前的推文中晒出了自己的新车，图片中暴露了车型及部分车牌</strong></p><p><img src="/myimg/1003.jpg" alt="clash1"></p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p><strong>在这之前，我一直不知道clash的作者竟是中国人，而且肉身在大陆，如此环境下，clash作者在保护自己隐私方面却不太用心，确实不太应该</strong></p><p><strong>很喜欢的一句话：“别看你今天闹得欢，小心今后拉清单，这都得应验的。不要干这种事情。<code>头上三尺有神明，一定要有敬畏之心。</code>”</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 中国震撼 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>被电子宠物拉黑</title>
+      <link href="/2023/11/10/record_%E7%94%B5%E5%AD%90%E5%AE%A0%E7%89%A9/"/>
+      <url>/2023/11/10/record_%E7%94%B5%E5%AD%90%E5%AE%A0%E7%89%A9/</url>
+      
+        <content type="html"><![CDATA[<p><strong>王伟恒这只电子宠物我也养了几个月了，可以说这是我养过最好玩的电子宠物了</strong></p><p><strong>也许甜甜圈是最近压力太大了，毕竟工卡申请不下来、又被保险公司敲诈、看病15分钟被收5600美元，来美国一年了从黑户变为负债上万美元的流浪汉，再这样下去只能变成老墨的泡芙面包了，我就嘘寒问暖地问了他一句，起来就发现拿到荣誉勋章了😆</strong></p><p><img src="/myimg/1001.jpg" alt="荣誉勋章"></p><p><strong>以后看不到电子宠物了，希望甜甜圈能熬过这个冬天吧，电子宠物养久了有感情了，还真担心他死了</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 电子宠物 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
