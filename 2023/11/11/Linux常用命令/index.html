@@ -1,0 +1,1381 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux常用命令 | Dinreal's Blog</title><meta name="author" content="Dinreal"><meta name="copyright" content="Dinreal"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关机&#x2F;重启&#x2F;注销   常用命令 作用    shutdown -h now 即刻关机   shutdown -h 10 10分钟后关机   shutdown -h 11:00 11：00关机   shutdown -h +10 预定时间关机（10分钟后）   shutdown -c 取消指定时间关机   shutdown -r now 重启   shutdown -r 10 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令">
+<meta property="og:url" content="http://example.com/2023/11/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Dinreal&#39;s Blog">
+<meta property="og:description" content="关机&#x2F;重启&#x2F;注销   常用命令 作用    shutdown -h now 即刻关机   shutdown -h 10 10分钟后关机   shutdown -h 11:00 11：00关机   shutdown -h +10 预定时间关机（10分钟后）   shutdown -c 取消指定时间关机   shutdown -r now 重启   shutdown -r 10 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/f8e178ff1fc7bc85e72164df9af057c0--861902032.jpg">
+<meta property="article:published_time" content="2023-11-11T15:39:23.157Z">
+<meta property="article:modified_time" content="2023-11-11T15:55:48.146Z">
+<meta property="article:author" content="Dinreal">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/f8e178ff1fc7bc85e72164df9af057c0--861902032.jpg"><link rel="shortcut icon" href="/myimg/logo.jpg"><link rel="canonical" href="http://example.com/2023/11/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux常用命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-11 23:55:48'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mycss.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Dinreal's Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/myimg/logo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/f8e178ff1fc7bc85e72164df9af057c0--861902032.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Dinreal's Blog"><span class="site-name">Dinreal's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux常用命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-11T15:39:23.157Z" title="发表于 2023-11-11 23:39:23">2023-11-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-11T15:55:48.146Z" title="更新于 2023-11-11 23:55:48">2023-11-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux常用命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="关机-重启-注销"><a href="#关机-重启-注销" class="headerlink" title="关机&#x2F;重启&#x2F;注销"></a>关机&#x2F;重启&#x2F;注销</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>shutdown -h now</td>
+<td>即刻关机</td>
+</tr>
+<tr>
+<td>shutdown -h 10</td>
+<td>10分钟后关机</td>
+</tr>
+<tr>
+<td>shutdown -h 11:00</td>
+<td>11：00关机</td>
+</tr>
+<tr>
+<td>shutdown -h +10</td>
+<td>预定时间关机（10分钟后）</td>
+</tr>
+<tr>
+<td>shutdown -c</td>
+<td>取消指定时间关机</td>
+</tr>
+<tr>
+<td>shutdown -r now</td>
+<td>重启</td>
+</tr>
+<tr>
+<td>shutdown -r 10</td>
+<td>10分钟之后重启</td>
+</tr>
+<tr>
+<td>shutdown -r 11:00</td>
+<td>定时重启</td>
+</tr>
+<tr>
+<td>reboot</td>
+<td>重启</td>
+</tr>
+<tr>
+<td>init 6</td>
+<td>重启</td>
+</tr>
+<tr>
+<td>init 0</td>
+<td>立刻关机</td>
+</tr>
+<tr>
+<td>telinit 0</td>
+<td>关机</td>
+</tr>
+<tr>
+<td>poweroff</td>
+<td>立刻关机</td>
+</tr>
+<tr>
+<td>halt</td>
+<td>关机</td>
+</tr>
+<tr>
+<td>sync</td>
+<td>buff数据同步到磁盘</td>
+</tr>
+<tr>
+<td>logout</td>
+<td>退出登录Shell</td>
+</tr>
+</tbody></table>
+<h2 id="系统信息和性能查看"><a href="#系统信息和性能查看" class="headerlink" title="系统信息和性能查看"></a>系统信息和性能查看</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uname -a</td>
+<td>查看内核&#x2F;OS&#x2F;CPU信息</td>
+</tr>
+<tr>
+<td>uname -r</td>
+<td>查看内核版本</td>
+</tr>
+<tr>
+<td>uname -m</td>
+<td>查看处理器架构</td>
+</tr>
+<tr>
+<td>arch</td>
+<td>查看处理器架构</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>查看计算机名</td>
+</tr>
+<tr>
+<td>who</td>
+<td>显示当前登录系统的用户</td>
+</tr>
+<tr>
+<td>who am i</td>
+<td>显示登录时的用户名</td>
+</tr>
+<tr>
+<td>whoami</td>
+<td>显示当前用户名</td>
+</tr>
+<tr>
+<td>cat &#x2F;proc&#x2F;version</td>
+<td>查看linux版本信息</td>
+</tr>
+<tr>
+<td>cat &#x2F;proc&#x2F;cpuinfo</td>
+<td>查看CPU信息</td>
+</tr>
+<tr>
+<td>cat &#x2F;proc&#x2F;interrupts</td>
+<td>查看中断</td>
+</tr>
+<tr>
+<td>cat &#x2F;proc&#x2F;loadavg</td>
+<td>查看系统负载</td>
+</tr>
+<tr>
+<td>uptime</td>
+<td>查看系统运行时间、用户数、负载</td>
+</tr>
+<tr>
+<td>env</td>
+<td>查看系统的环境变量</td>
+</tr>
+<tr>
+<td>lsusb -tv</td>
+<td>查看系统USB设备信息</td>
+</tr>
+<tr>
+<td>lspci -tv</td>
+<td>查看系统PCI设备信息</td>
+</tr>
+<tr>
+<td>lsmod</td>
+<td>查看已加载的系统模块</td>
+</tr>
+<tr>
+<td>grep MemTotal &#x2F;proc&#x2F;meminfo</td>
+<td>查看内存总量</td>
+</tr>
+<tr>
+<td>grep MemFree &#x2F;proc&#x2F;meminfo</td>
+<td>查看空闲内存量</td>
+</tr>
+<tr>
+<td>free -m</td>
+<td>查看内存用量和交换区用量</td>
+</tr>
+<tr>
+<td>date</td>
+<td>显示系统日期时间</td>
+</tr>
+<tr>
+<td>cal 2021</td>
+<td>显示2021日历表</td>
+</tr>
+<tr>
+<td>top</td>
+<td>动态显示cpu&#x2F;内存&#x2F;进程等情况</td>
+</tr>
+<tr>
+<td>vmstat 1 20</td>
+<td>每1秒采一次系统状态，采20次</td>
+</tr>
+<tr>
+<td>iostat</td>
+<td>查看io读写&#x2F;cpu使用情况</td>
+</tr>
+<tr>
+<td>sar -u 1 10</td>
+<td>查询cpu使用情况（1秒一次，共10次）</td>
+</tr>
+<tr>
+<td>sar -d 1 10</td>
+<td>查询磁盘性能</td>
+</tr>
+</tbody></table>
+<h2 id="磁盘和分区"><a href="#磁盘和分区" class="headerlink" title="磁盘和分区"></a>磁盘和分区</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fdisk -l</td>
+<td>查看所有磁盘分区</td>
+</tr>
+<tr>
+<td>swapon -s</td>
+<td>查看所有交换分区</td>
+</tr>
+<tr>
+<td>df -h</td>
+<td>查看磁盘使用情况及挂载点</td>
+</tr>
+<tr>
+<td>df -hl</td>
+<td>查看磁盘使用情况及挂载点</td>
+</tr>
+<tr>
+<td>du -sh &#x2F;dir</td>
+<td>查看指定某个目录的大小</td>
+</tr>
+<tr>
+<td>du -sk * | sort -rn</td>
+<td>从高到低依次显示文件和目录大小</td>
+</tr>
+<tr>
+<td>mount &#x2F;dev&#x2F;hda2 &#x2F;mnt&#x2F;hda2</td>
+<td>挂载hda2盘</td>
+</tr>
+<tr>
+<td>mount -t ntfs &#x2F;dev&#x2F;sdc1 &#x2F;mnt&#x2F;usbhd1</td>
+<td>指定文件系统类型挂载（如ntfs）</td>
+</tr>
+<tr>
+<td>mount -o loop xxx.iso &#x2F;mnt&#x2F;cdrom</td>
+<td>挂载iso文件</td>
+</tr>
+<tr>
+<td>mount &#x2F;dev&#x2F;sda1 &#x2F;mnt&#x2F;usbdisk</td>
+<td>挂载usb盘&#x2F;闪存设备</td>
+</tr>
+<tr>
+<td>umount -v &#x2F;dev&#x2F;sda1</td>
+<td>通过设备名卸载</td>
+</tr>
+<tr>
+<td>umount -v &#x2F;mnt&#x2F;mymnt</td>
+<td>通过挂载点卸载</td>
+</tr>
+<tr>
+<td>fuser -km &#x2F;mnt&#x2F;hda1</td>
+<td>强制卸载(慎用)</td>
+</tr>
+</tbody></table>
+<h2 id="用户和用户组"><a href="#用户和用户组" class="headerlink" title="用户和用户组"></a>用户和用户组</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>useradd newuser</td>
+<td>创建用户</td>
+</tr>
+<tr>
+<td>userdel -r newuser</td>
+<td>删除用户</td>
+</tr>
+<tr>
+<td>usermod -g group_name user_name</td>
+<td>修改用户的组</td>
+</tr>
+<tr>
+<td>usermod -aG group_name user_name</td>
+<td>将用户添加到组</td>
+</tr>
+<tr>
+<td>usermod -s &#x2F;bin&#x2F;ksh -d &#x2F;home&#x2F;codepig –g dev codesheep</td>
+<td>修改用户codesheep的登录Shell、主目录以及用户组</td>
+</tr>
+<tr>
+<td>groups test</td>
+<td>查看test用户所在的组</td>
+</tr>
+<tr>
+<td>groupadd group_name</td>
+<td>创建用户组</td>
+</tr>
+<tr>
+<td>groupdel group_name</td>
+<td>删除用户组</td>
+</tr>
+<tr>
+<td>groupmod -n new_name old_name</td>
+<td>重命名用户组</td>
+</tr>
+<tr>
+<td>su - user_name</td>
+<td>完整切换到一个用户环境</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>修改口令</td>
+</tr>
+<tr>
+<td>passwd user_name</td>
+<td>修改某用户的口令</td>
+</tr>
+<tr>
+<td>w</td>
+<td>查看活动用户</td>
+</tr>
+<tr>
+<td>id user_name</td>
+<td>查看指定用户信息</td>
+</tr>
+<tr>
+<td>last</td>
+<td>查看用户登录日志</td>
+</tr>
+<tr>
+<td>crontab -l</td>
+<td>查看当前用户的计划任务</td>
+</tr>
+<tr>
+<td>cut -d: -f1 &#x2F;etc&#x2F;passwd</td>
+<td>查看系统所有用户</td>
+</tr>
+<tr>
+<td>cut -d: -f1 &#x2F;etc&#x2F;group</td>
+<td>查看系统所有组</td>
+</tr>
+</tbody></table>
+<h2 id="网络和进程管理"><a href="#网络和进程管理" class="headerlink" title="网络和进程管理"></a>网络和进程管理</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ifconfig</td>
+<td>查看网络接口属性</td>
+</tr>
+<tr>
+<td>ifconfig eth0</td>
+<td>查看某网卡的配置</td>
+</tr>
+<tr>
+<td>route -n</td>
+<td>查看路由表</td>
+</tr>
+<tr>
+<td>netstat -lntp</td>
+<td>查看所有监听端口</td>
+</tr>
+<tr>
+<td>netstat -antp</td>
+<td>查看已经建立的TCP连接</td>
+</tr>
+<tr>
+<td>netstat -lutp</td>
+<td>查看TCP&#x2F;UDP的状态信息</td>
+</tr>
+<tr>
+<td>ifup eth0</td>
+<td>启用eth0网络设备</td>
+</tr>
+<tr>
+<td>ifdown eth0</td>
+<td>禁用eth0网络设备</td>
+</tr>
+<tr>
+<td>iptables -L</td>
+<td>查看iptables规则</td>
+</tr>
+<tr>
+<td>ifconfig eth0 192.168.1.1 netmask 255.255.255.0</td>
+<td>配置ip地址</td>
+</tr>
+<tr>
+<td>dhclient eth0</td>
+<td>以dhcp模式启用eth0</td>
+</tr>
+<tr>
+<td>route add -net 0&#x2F;0 gw Gateway_IP</td>
+<td>配置默认网关</td>
+</tr>
+<tr>
+<td>route add -net 192.168.0.0 netmask 255.255.0.0 gw 192.168.1.1</td>
+<td>配置静态路由到达网 络’192.168.0.0&#x2F;16’</td>
+</tr>
+<tr>
+<td>route del 0&#x2F;0 gw Gateway_IP</td>
+<td>删除静态路由</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>查看主机名</td>
+</tr>
+<tr>
+<td>host test.com</td>
+<td>解析主机名</td>
+</tr>
+<tr>
+<td>nslookup test.com</td>
+<td>查询DNS记录，查看域名解<br/>析是否正常</td>
+</tr>
+<tr>
+<td>ps -ef</td>
+<td>查看所有进程</td>
+</tr>
+<tr>
+<td>ps -ef | grep name</td>
+<td>过滤出你需要的进程</td>
+</tr>
+<tr>
+<td>kill -s name</td>
+<td>kill指定名称的进程</td>
+</tr>
+<tr>
+<td>kill -s pid</td>
+<td>kill指定pid的进程</td>
+</tr>
+<tr>
+<td>top</td>
+<td>实时显示进程状态</td>
+</tr>
+<tr>
+<td>vmstat 1 20</td>
+<td>每1秒采一次系统状态，采<br/>20次</td>
+</tr>
+<tr>
+<td>iostat</td>
+<td>查看io读写&#x2F;cpu使用情况</td>
+</tr>
+<tr>
+<td>sar -u 1 10</td>
+<td>查询cpu使用情况（1秒一次，共10次）</td>
+</tr>
+<tr>
+<td>sar -d 1 10</td>
+<td>查询磁盘性能</td>
+</tr>
+</tbody></table>
+<h2 id="常见系统服务命令"><a href="#常见系统服务命令" class="headerlink" title="常见系统服务命令"></a>常见系统服务命令</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>chkconfig –list</td>
+<td>列出系统服务</td>
+</tr>
+<tr>
+<td>service &lt;服务名&gt; status</td>
+<td>查看某个服务</td>
+</tr>
+<tr>
+<td>service &lt;服务名&gt; start</td>
+<td>启动某个服务</td>
+</tr>
+<tr>
+<td>service &lt;服务名&gt; stop</td>
+<td>终止某个服务</td>
+</tr>
+<tr>
+<td>service &lt;服务名&gt; restart</td>
+<td>重启某个服务</td>
+</tr>
+<tr>
+<td>systemctl status &lt;服务名&gt;</td>
+<td>查看某个服务</td>
+</tr>
+<tr>
+<td>systemctl start &lt;服务名&gt;</td>
+<td>启动某个服务</td>
+</tr>
+<tr>
+<td>systemctl stop &lt;服务名&gt;</td>
+<td>终止某个服务</td>
+</tr>
+<tr>
+<td>systemctl restart &lt;服务名&gt;</td>
+<td>重启某个服务</td>
+</tr>
+<tr>
+<td>systemctl enable &lt;服务名&gt;</td>
+<td>开启自启动</td>
+</tr>
+<tr>
+<td>systemctl disable &lt;服务名&gt;</td>
+<td>关闭自启动</td>
+</tr>
+</tbody></table>
+<h2 id="文件和目录操作"><a href="#文件和目录操作" class="headerlink" title="文件和目录操作"></a>文件和目录操作</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd &lt;目录名&gt;</td>
+<td>进入某个目录</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>回上级目录</td>
+</tr>
+<tr>
+<td>cd ..&#x2F;..</td>
+<td>回上两级目录</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>进个人主目录</td>
+</tr>
+<tr>
+<td>cd -</td>
+<td>回上一步所在目录</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>显示当前路径</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>查看文件目录列表</td>
+</tr>
+<tr>
+<td>ls -F</td>
+<td>查看目录中内容（显示是文件还是目录）</td>
+</tr>
+<tr>
+<td>ls -l</td>
+<td>查看文件和目录的详情列表</td>
+</tr>
+<tr>
+<td>ls -a</td>
+<td>查看隐藏文件</td>
+</tr>
+<tr>
+<td>ls -lh</td>
+<td>查看文件和目录的详情列表（增强文件大小易读性）</td>
+</tr>
+<tr>
+<td>ls -lSr</td>
+<td>查看文件和目录列表（以文件大小升序查看）</td>
+</tr>
+<tr>
+<td>tree</td>
+<td>查看文件和目录的树形结构</td>
+</tr>
+<tr>
+<td>mkdir &lt;目录名&gt;</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>mkdir dir1 dir2</td>
+<td>同时创建两个目录</td>
+</tr>
+<tr>
+<td>mkdir -p &#x2F;tmp&#x2F;dir1&#x2F;dir2</td>
+<td>创建目录树</td>
+</tr>
+<tr>
+<td>rm -f file1</td>
+<td>删除’file1’文件</td>
+</tr>
+<tr>
+<td>rmdir dir1</td>
+<td>删除’dir1’目录</td>
+</tr>
+<tr>
+<td>rm -rf dir1</td>
+<td>删除’dir1’目录和其内容</td>
+</tr>
+<tr>
+<td>rm -rf dir1 dir2</td>
+<td>同时删除两个目录及其内容</td>
+</tr>
+<tr>
+<td>mv old_dir new_dir</td>
+<td>重命名&#x2F;移动目录</td>
+</tr>
+<tr>
+<td>cp file1 file2</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>cp dir&#x2F;*</td>
+<td>复制某目录下的所有文件至当前目录</td>
+</tr>
+<tr>
+<td>cp -a dir1 dir2</td>
+<td>复制目录</td>
+</tr>
+<tr>
+<td>cp -a &#x2F;tmp&#x2F;dir</td>
+<td>复制一个目录至当前目录</td>
+</tr>
+<tr>
+<td>ln -s file1 link1</td>
+<td>创建指向文件&#x2F;目录的软链接</td>
+</tr>
+<tr>
+<td>ln file1 lnk1</td>
+<td>创建指向文件&#x2F;目录的物理链接</td>
+</tr>
+<tr>
+<td>find &#x2F; -name file1</td>
+<td>从跟目录开始搜索文件&#x2F;目录</td>
+</tr>
+<tr>
+<td>find &#x2F; -user user1</td>
+<td>搜索用户user1的文件&#x2F;目录</td>
+</tr>
+<tr>
+<td>find &#x2F;dir -name *.bin</td>
+<td>在目录&#x2F;dir中搜带有.bin后缀的文件</td>
+</tr>
+<tr>
+<td>locate &lt;关键词&gt;</td>
+<td>快速定位文件</td>
+</tr>
+<tr>
+<td>locate *.mp4</td>
+<td>寻找.mp4结尾的文件</td>
+</tr>
+<tr>
+<td>whereis &lt;关键词&gt;</td>
+<td>显示某二进制文件&#x2F;可执行文件的路径</td>
+</tr>
+<tr>
+<td>which &lt;关键词&gt;</td>
+<td>查找系统目录下某的二进制文件</td>
+</tr>
+<tr>
+<td>chmod ugo+rwx dir1</td>
+<td>设置目录所有者(u)、群组(g)及其他人(o)的读(r)写(w)执行(x)权限</td>
+</tr>
+<tr>
+<td>chmod go-rwx dir1</td>
+<td>移除群组(g)与其他人(o)对目录的读写执行权限</td>
+</tr>
+<tr>
+<td>chown user1 file1</td>
+<td>改变文件的所有者属性</td>
+</tr>
+<tr>
+<td>chown -R user1 dir1</td>
+<td>改变目录的所有者属性</td>
+</tr>
+<tr>
+<td>chgrp group1 file1</td>
+<td>改变文件群组</td>
+</tr>
+<tr>
+<td>chown user1:group1 file1</td>
+<td>改变文件的所有人和群组</td>
+</tr>
+</tbody></table>
+<h2 id="文件查看和处理"><a href="#文件查看和处理" class="headerlink" title="文件查看和处理"></a>文件查看和处理</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cat file1</td>
+<td>查看文件内容</td>
+</tr>
+<tr>
+<td>cat -n file1</td>
+<td>查看内容并标示行数</td>
+</tr>
+<tr>
+<td>cat xxx.txt</td>
+<td>awk ‘NR%2&#x3D;&#x3D;1’</td>
+</tr>
+<tr>
+<td>tac file1</td>
+<td>从最后一行开始反看文件内容</td>
+</tr>
+<tr>
+<td>more file1</td>
+<td>查看一个⻓文件的内容</td>
+</tr>
+<tr>
+<td>less file1</td>
+<td>类似more命令，但允许反向操作</td>
+</tr>
+<tr>
+<td>head -2 file1</td>
+<td>查看文件前两行</td>
+</tr>
+<tr>
+<td>tail -2 file1</td>
+<td>查看文件后两行</td>
+</tr>
+<tr>
+<td>tail -f &#x2F;log&#x2F;msg</td>
+<td>实时查看添加到文件中的内容</td>
+</tr>
+<tr>
+<td>grep keyword hello.txt</td>
+<td>在文件hello.txt中查找关键词keyword</td>
+</tr>
+<tr>
+<td>grep ^key hello.txt</td>
+<td>在文件hello.txt中查找以key开头的内容</td>
+</tr>
+<tr>
+<td>grep [0-9] hello.txt</td>
+<td>选择hello.txt文件中所有包含数字的行</td>
+</tr>
+<tr>
+<td>sed ‘s&#x2F;s1&#x2F;s2&#x2F;g’ hello.txt</td>
+<td>将hello.txt文件中的s1替换成s2</td>
+</tr>
+<tr>
+<td>sed ‘&#x2F;^$&#x2F;d’ hello.txt</td>
+<td>从hello.txt文件中删除所有空白行</td>
+</tr>
+<tr>
+<td>sed ‘&#x2F; *#&#x2F;d; &#x2F;^$&#x2F;d’ hello.txt</td>
+<td>从hello.txt文件中删除所有注释和空白行</td>
+</tr>
+<tr>
+<td>sed -e ‘1d’ hello.txt</td>
+<td>从文件hello.txt 中排除第一行</td>
+</tr>
+<tr>
+<td>sed -n ‘&#x2F;s1&#x2F;p’ hello.txt</td>
+<td>查看只包含关键词”s1”的行</td>
+</tr>
+<tr>
+<td>sed -e ‘s&#x2F; *$&#x2F;&#x2F;‘ hello.txt</td>
+<td>删除每一行最后的空白字符</td>
+</tr>
+<tr>
+<td>sed -e ‘s&#x2F;s1&#x2F;&#x2F;g’ hello.txt</td>
+<td>从文档中只删除词汇s1并保留剩余全部</td>
+</tr>
+<tr>
+<td>sed -n ‘1,5p;5q’ hello.txt</td>
+<td>查看从第一行到第5行内容</td>
+</tr>
+<tr>
+<td>sed -n ‘5p;5q’ hello.txt</td>
+<td>查看第5行</td>
+</tr>
+<tr>
+<td>paste file1 file2</td>
+<td>合并两个文件或两栏的内容</td>
+</tr>
+<tr>
+<td>paste -d ‘+’ file1 file2</td>
+<td>合并两个文件或两栏的内容，中间用”+”区分</td>
+</tr>
+<tr>
+<td>sort file1 file2</td>
+<td>排序两个文件的内容</td>
+</tr>
+<tr>
+<td>sort file1 file2</td>
+<td>uniq</td>
+</tr>
+<tr>
+<td>sort file1 file2</td>
+<td>uniq -u</td>
+</tr>
+<tr>
+<td>sort file1 file2</td>
+<td>uniq -d</td>
+</tr>
+<tr>
+<td>comm -1 file1 file2</td>
+<td>比较两个文件的内容(去除’file1’所含内容)</td>
+</tr>
+<tr>
+<td>comm -2 file1 file2</td>
+<td>比较两个文件的内容(去除’file2’所含内容)</td>
+</tr>
+<tr>
+<td>comm -3 file1 file2</td>
+<td>比较两个文件的内容(去除两文件共有部分)</td>
+</tr>
+</tbody></table>
+<h2 id="打包和解压"><a href="#打包和解压" class="headerlink" title="打包和解压"></a>打包和解压</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>zip xxx.zip file</td>
+<td>压缩至zip包</td>
+</tr>
+<tr>
+<td>zip -r xxx.zip file1 file2 dir1</td>
+<td>将多个文件+目录压成zip包</td>
+</tr>
+<tr>
+<td>unzip xxx.zip</td>
+<td>解压zip包</td>
+</tr>
+<tr>
+<td>tar -cvf xxx.tar file</td>
+<td>创建非压缩tar包</td>
+</tr>
+<tr>
+<td>tar -cvf xxx.tar file1 file2 dir1</td>
+<td>将多个文件+目录打tar包</td>
+</tr>
+<tr>
+<td>tar -tf xxx.tar</td>
+<td>查看tar包的内容</td>
+</tr>
+<tr>
+<td>tar -xvf xxx.tar</td>
+<td>解压tar包</td>
+</tr>
+<tr>
+<td>tar -xvf xxx.tar -C &#x2F;dir</td>
+<td>将tar包解压至指定目录</td>
+</tr>
+<tr>
+<td>tar -cvfj xxx.tar.bz2 dir</td>
+<td>创建bz2压缩包</td>
+</tr>
+<tr>
+<td>tar -jxvf xxx.tar.bz2</td>
+<td>解压bz2压缩包</td>
+</tr>
+<tr>
+<td>tar -cvfz xxx.tar.gz dir</td>
+<td>创建gzip压缩包</td>
+</tr>
+<tr>
+<td>tar -zxvf xxx.tar.gz</td>
+<td>解压gzip压缩包</td>
+</tr>
+<tr>
+<td>bunzip2 xxx.bz2</td>
+<td>解压bz2压缩包</td>
+</tr>
+<tr>
+<td>bzip2 filename</td>
+<td>压缩文件</td>
+</tr>
+<tr>
+<td>gunzip xxx.gz</td>
+<td>解压gzip压缩包</td>
+</tr>
+<tr>
+<td>gzip filename</td>
+<td>压缩文件</td>
+</tr>
+<tr>
+<td>gzip -9 filename</td>
+<td>最大程度压缩</td>
+</tr>
+</tbody></table>
+<h2 id="RPM包管理命令"><a href="#RPM包管理命令" class="headerlink" title="RPM包管理命令"></a>RPM包管理命令</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rpm -qa</td>
+<td>查看已安装的rpm包</td>
+</tr>
+<tr>
+<td>rpm -q pkg_name</td>
+<td>查询某个rpm包</td>
+</tr>
+<tr>
+<td>rpm -q –whatprovides xxx</td>
+<td>显示xxx功能是由哪个包提供的</td>
+</tr>
+<tr>
+<td>rpm -q –whatrequires xxx</td>
+<td>显示xxx功能被哪个程序包依赖的</td>
+</tr>
+<tr>
+<td>rpm -q –changelog xxx</td>
+<td>显示xxx包的更改记录</td>
+</tr>
+<tr>
+<td>rpm -qi pkg_name</td>
+<td>查看一个包的详细信息</td>
+</tr>
+<tr>
+<td>rpm -qd pkg_name</td>
+<td>查询一个包所提供的文档</td>
+</tr>
+<tr>
+<td>rpm -qc pkg_name</td>
+<td>查看已安装rpm包提供的配置文件</td>
+</tr>
+<tr>
+<td>rpm -ql pkg_name</td>
+<td>查看一个包安装了哪些文件</td>
+</tr>
+<tr>
+<td>rpm -qf filename</td>
+<td>查看某个文件属于哪个包</td>
+</tr>
+<tr>
+<td>rpm -qR pkg_name</td>
+<td>查询包的依赖关系</td>
+</tr>
+<tr>
+<td>rpm -ivh xxx.rpm</td>
+<td>安装rpm包</td>
+</tr>
+<tr>
+<td>rpm -ivh –test xxx.rpm</td>
+<td>测试安装rpm包</td>
+</tr>
+<tr>
+<td>rpm -ivh –nodeps xxx.rpm</td>
+<td>安装rpm包时忽略依赖关系</td>
+</tr>
+<tr>
+<td>rpm -e xxx</td>
+<td>卸载程序包</td>
+</tr>
+<tr>
+<td>rpm -Fvh pkg_name</td>
+<td>升级确定已安装的rpm包</td>
+</tr>
+<tr>
+<td>rpm -Uvh pkg_name</td>
+<td>升级rpm包(若未安装则会安装)</td>
+</tr>
+<tr>
+<td>rpm -V pkg_name</td>
+<td>RPM包详细信息校验</td>
+</tr>
+</tbody></table>
+<h2 id="YUM包管理命令"><a href="#YUM包管理命令" class="headerlink" title="YUM包管理命令"></a>YUM包管理命令</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>yum repolist enabled</td>
+<td>显示可用的源仓库</td>
+</tr>
+<tr>
+<td>yum search pkg_name</td>
+<td>搜索软件包</td>
+</tr>
+<tr>
+<td>yum install pkg_name</td>
+<td>下载并安装软件包</td>
+</tr>
+<tr>
+<td>yum install –downloadonly pkg_name</td>
+<td>只下载不安装</td>
+</tr>
+<tr>
+<td>yum list</td>
+<td>显示所有程序包</td>
+</tr>
+<tr>
+<td>yum list installed</td>
+<td>查看当前系统已安装包</td>
+</tr>
+<tr>
+<td>yum list updates</td>
+<td>查看可以更新的包列表</td>
+</tr>
+<tr>
+<td>yum check-update</td>
+<td>查看可升级的软件包</td>
+</tr>
+<tr>
+<td>yum update</td>
+<td>更新所有软件包</td>
+</tr>
+<tr>
+<td>yum update pkg_name</td>
+<td>升级指定软件包</td>
+</tr>
+<tr>
+<td>yum deplist pkg_name</td>
+<td>列出软件包依赖关系</td>
+</tr>
+<tr>
+<td>yum remove pkg_name</td>
+<td>删除软件包</td>
+</tr>
+<tr>
+<td>yum clean all</td>
+<td>清除缓存</td>
+</tr>
+<tr>
+<td>yum clean packages</td>
+<td>清除缓存的软件包</td>
+</tr>
+<tr>
+<td>yum clean headers</td>
+<td>清除缓存的header</td>
+</tr>
+</tbody></table>
+<h2 id="DPKG包管理命令"><a href="#DPKG包管理命令" class="headerlink" title="DPKG包管理命令"></a>DPKG包管理命令</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dpkg -c xxx.deb</td>
+<td>列出deb包的内容</td>
+</tr>
+<tr>
+<td>dpkg -i xxx.deb</td>
+<td>安装&#x2F;更新deb包</td>
+</tr>
+<tr>
+<td>dpkg -r pkg_name</td>
+<td>移除deb包</td>
+</tr>
+<tr>
+<td>dpkg -P pkg_name</td>
+<td>移除deb包(不保留配置)</td>
+</tr>
+<tr>
+<td>dpkg -l</td>
+<td>查看系统中已安装deb包</td>
+</tr>
+<tr>
+<td>dpkg -l pkg_name</td>
+<td>显示包的大致信息</td>
+</tr>
+<tr>
+<td>dpkg -L pkg_name</td>
+<td>查看deb包安装的文件</td>
+</tr>
+<tr>
+<td>dpkg -s pkg_name</td>
+<td>查看包的详细信息</td>
+</tr>
+<tr>
+<td>dpkg –unpack xxx.deb</td>
+<td>解开deb包的内容</td>
+</tr>
+</tbody></table>
+<h2 id="APT软件工具"><a href="#APT软件工具" class="headerlink" title="APT软件工具"></a>APT软件工具</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>apt-cache search pkg_name</td>
+<td>搜索程序包</td>
+</tr>
+<tr>
+<td>apt-cache show pkg_name</td>
+<td>获取包的概览信息</td>
+</tr>
+<tr>
+<td>apt-get install pkg_name</td>
+<td>安装&#x2F;升级软件包</td>
+</tr>
+<tr>
+<td>apt-get purge pkg_name</td>
+<td>卸载软件（包括配置）</td>
+</tr>
+<tr>
+<td>apt-get remove pkg_name</td>
+<td>卸载软件（不包括配置）</td>
+</tr>
+<tr>
+<td>apt-get update</td>
+<td>更新包索引信息</td>
+</tr>
+<tr>
+<td>apt-get upgrade</td>
+<td>更新已安装软件包</td>
+</tr>
+<tr>
+<td>apt-get clean</td>
+<td>清理缓存</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Linux常用命令</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="http://example.com/2023/11/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">http://example.com/2023/11/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>Dinreal</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2023-11-11</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-11-11</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/f8e178ff1fc7bc85e72164df9af057c0--861902032.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/11/11/Markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/6da959e7162312dcc176343d27503ae0--32988358.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Markdown语法</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/myimg/logo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Dinreal</div><div class="author-info__description">我深爱着这片土地,但不是任何政党</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本网站部署在Github仓库，如有卡顿请科学上网</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA-%E9%87%8D%E5%90%AF-%E6%B3%A8%E9%94%80"><span class="toc-number">1.</span> <span class="toc-text">关机&#x2F;重启&#x2F;注销</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E5%92%8C%E6%80%A7%E8%83%BD%E6%9F%A5%E7%9C%8B"><span class="toc-number">2.</span> <span class="toc-text">系统信息和性能查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%92%8C%E5%88%86%E5%8C%BA"><span class="toc-number">3.</span> <span class="toc-text">磁盘和分区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-number">4.</span> <span class="toc-text">用户和用户组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">网络和进程管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">常见系统服务命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="toc-number">7.</span> <span class="toc-text">文件和目录操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%A4%84%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">文件查看和处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E5%92%8C%E8%A7%A3%E5%8E%8B"><span class="toc-number">9.</span> <span class="toc-text">打包和解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPM%E5%8C%85%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">10.</span> <span class="toc-text">RPM包管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YUM%E5%8C%85%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">11.</span> <span class="toc-text">YUM包管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DPKG%E5%8C%85%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">12.</span> <span class="toc-text">DPKG包管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#APT%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7"><span class="toc-number">13.</span> <span class="toc-text">APT软件工具</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/11/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Linux常用命令"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/f8e178ff1fc7bc85e72164df9af057c0--861902032.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux常用命令"/></a><div class="content"><a class="title" href="/2023/11/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Linux常用命令">Linux常用命令</a><time datetime="2023-11-11T15:39:23.157Z" title="发表于 2023-11-11 23:39:23">2023-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/11/Markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/6da959e7162312dcc176343d27503ae0--32988358.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Markdown语法"/></a><div class="content"><a class="title" href="/2023/11/11/Markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法">Markdown语法</a><time datetime="2023-11-11T08:03:41.032Z" title="发表于 2023-11-11 16:03:41">2023-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/11/Front-matter%E9%85%8D%E7%BD%AE/" title="Front-matter配置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/bbc41906aed5f6a572e4fcb6f02f9ce5--1029132356.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Front-matter配置"/></a><div class="content"><a class="title" href="/2023/11/11/Front-matter%E9%85%8D%E7%BD%AE/" title="Front-matter配置">Front-matter配置</a><time datetime="2023-11-11T08:03:41.031Z" title="发表于 2023-11-11 16:03:41">2023-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/10/Clash/" title="Clash作者停更"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/a2493581b5ea1096197c4e101bc28081--2221952614.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Clash作者停更"/></a><div class="content"><a class="title" href="/2023/11/10/Clash/" title="Clash作者停更">Clash作者停更</a><time datetime="2023-11-10T06:25:58.383Z" title="发表于 2023-11-10 14:25:58">2023-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/10/record_%E7%94%B5%E5%AD%90%E5%AE%A0%E7%89%A9/" title="被电子宠物拉黑"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/9777e019e835e89799129bf39f8a71dd--2303839827.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="被电子宠物拉黑"/></a><div class="content"><a class="title" href="/2023/11/10/record_%E7%94%B5%E5%AD%90%E5%AE%A0%E7%89%A9/" title="被电子宠物拉黑">被电子宠物拉黑</a><time datetime="2023-11-09T20:49:41.672Z" title="发表于 2023-11-10 04:49:41">2023-11-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By Dinreal</div><div class="footer_custom_text"><p><a target="_blank" href="https://github.com/hexojs/hexo"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo"></a>&nbsp;<a target="_blank" href="https://github.com/jerryc127/hexo-theme-butterfly"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script src="/js/sun_moon.js" async></script><script async src="/js/title.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202304/ca981cca6b2855c7a60026a1c2670359--4174206898.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/随笔/&quot;);" href="javascript:void(0);">随笔</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202208/f7f00b1554eacb4cf8b9abfc993232f0--1583705278.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/笔记/&quot;);" href="javascript:void(0);">笔记</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202302/1b7b8d620df153d416437c6ae3cbc069--587439692.jpg);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/记录/&quot;);" href="javascript:void(0);">记录</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2023/11/11/Linux常用命令/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/f8e178ff1fc7bc85e72164df9af057c0--861902032.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-11-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2023/11/11/Linux常用命令/&quot;);" href="javascript:void(0);" alt="">Linux常用命令</a><div class="blog-slider__text">by Dinreal</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2023/11/11/Linux常用命令/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2023/11/11/Markdown语法/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/6da959e7162312dcc176343d27503ae0--32988358.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-11-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2023/11/11/Markdown语法/&quot;);" href="javascript:void(0);" alt="">Markdown语法</a><div class="blog-slider__text">by Dinreal</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2023/11/11/Markdown语法/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2023/11/11/Front-matter配置/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://cdn-hw-static2.shanhutech.cn/bizhi/staticwp/202209/bbc41906aed5f6a572e4fcb6f02f9ce5--1029132356.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-11-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2023/11/11/Front-matter配置/&quot;);" href="javascript:void(0);" alt="">Front-matter配置</a><div class="blog-slider__text">by Dinreal</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2023/11/11/Front-matter配置/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('pagination');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>
