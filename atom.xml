@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-11-11T17:39:31.315Z</updated>
+  <updated>2023-11-12T11:25:13.349Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>V2ray搭建教程</title>
+    <link href="http://example.com/2023/11/12/V2ray%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/"/>
+    <id>http://example.com/2023/11/12/V2ray%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</id>
+    <published>2023-11-12T11:22:37.114Z</published>
+    <updated>2023-11-12T11:25:13.349Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="V2ray搭建准备工作"><a href="#V2ray搭建准备工作" class="headerlink" title="V2ray搭建准备工作"></a>V2ray搭建准备工作</h2><ol><li><strong>一台拥有公网ip的服务器</strong></li><li><strong>购买域名，将域名解析到服务器</strong></li></ol><h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><h3 id="开启防火墙（配置后需重启服务器）"><a href="#开启防火墙（配置后需重启服务器）" class="headerlink" title="开启防火墙（配置后需重启服务器）"></a>开启防火墙（配置后需重启服务器）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br><span class="line">apt-get purge netfilter-persistent</span><br></pre></td></tr></table></figure><h3 id="SSL证书"><a href="#SSL证书" class="headerlink" title="SSL证书"></a>SSL证书</h3><p><strong>申请证书</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt update -y       # Debian/Ubuntu 命令</span><br><span class="line">apt install -y curl   # Debian/Ubuntu 命令</span><br><span class="line">apt install -y socat  # Debian/Ubuntu 命令</span><br><span class="line">yum update -y        #CentOS 命令</span><br><span class="line">yum install -y curl    #CentOS 命令</span><br><span class="line">yum install -y socat   #CentOS 命令</span><br><span class="line">curl https://get.acme.sh | sh</span><br><span class="line">~/.acme.sh/acme.sh --register-account -m example@xx.com #替换成自己的邮箱</span><br></pre></td></tr></table></figure><p><strong>安装证书</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.acme.sh/acme.sh --issue -d www.example.com --standalone   #替换成自己解析好的域名</span><br></pre></td></tr></table></figure><p><strong>更改解析域</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.acme.sh/acme.sh --installcert -d www.example.com --key-file /root/private.key --fullchain-file /root/cert.crt    #替换成自己解析好的域名</span><br></pre></td></tr></table></figure><p><code>在root目录下检查是否有 cert.crt 文件，如有即申请成功</code></p><h2 id="X-ui面板"><a href="#X-ui面板" class="headerlink" title="X-ui面板"></a>X-ui面板</h2><ul><li><strong>使用命令行安装X-ui面板</strong></li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br></pre></td></tr></table></figure><ul><li><strong>使用 x-ui 命令显示管理菜单，设置用户名密码&amp;端口，<code>并安装bbr</code></strong></li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo x-ui</span><br></pre></td></tr></table></figure><ul><li><p><strong>到浏览器，使用公网ip地址＋设置的端口号进入X-ui面板</strong></p></li><li><p><strong>登录面板后，点击“入站列表” -&gt; 添加入站，额外ID设置为64，其他选项可不修改，点击添加</strong></p></li></ul><h2 id="V2ray的使用"><a href="#V2ray的使用" class="headerlink" title="V2ray的使用"></a>V2ray的使用</h2><h3 id="V2ray客户端安装"><a href="#V2ray客户端安装" class="headerlink" title="V2ray客户端安装"></a>V2ray客户端安装</h3><p><strong>首先要有V2ray的客户端</strong></p><p><strong>下载地址：<a href="https://github.com/2dust/v2rayN/releases">V2ray客户端</a></strong></p><p><strong>若程序无法运行请安装：<a href="https://docs.microsoft.com/zh-cn/dotnet/framework/install/guide-for-developers">NET Framework</a></strong></p><h3 id="导入配置"><a href="#导入配置" class="headerlink" title="导入配置"></a>导入配置</h3><ul><li><strong>在 X-ui面板-入站列表-详细信息-复制链接</strong></li><li><strong>右键V2ray客户端，选择 “从剪切板导入批量URL”</strong></li><li><strong>进入客户端，点击 “检查更新” - “v2rayN”，更新完成后点击 “重启服务”</strong></li><li><strong>右键V2ray客户端，选择 “系统代理” - “自动配置系统代理” ，选择 “路由” - “绕过大陆”</strong></li><li><strong>以上</strong></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;V2ray搭建准备工作&quot;&gt;&lt;a href=&quot;#V2ray搭建准备工作&quot; class=&quot;headerlink&quot; title=&quot;V2ray搭建准备工作&quot;&gt;&lt;/a&gt;V2ray搭建准备工作&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;一台拥有公网ip的服务器&lt;/strong</summary>
+      
+    
+    
+    
+    <category term="笔记" scheme="http://example.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>《有的人》</title>
